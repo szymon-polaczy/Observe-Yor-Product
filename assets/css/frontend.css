@@ -1,0 +1,397 @@
+/**
+ * Frontend styles for Observe-Yor-Product
+ */
+
+/* 3D Viewer Container */
+.oyp-3d-viewer-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.oyp-3d-viewer {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.oyp-3d-viewer canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* WooCommerce Gallery Integration */
+.woocommerce-product-gallery .oyp-3d-slide {
+    position: relative;
+}
+
+.oyp-3d-viewer-placeholder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Badge */
+.oyp-3d-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: help;
+}
+
+.oyp-3d-badge:hover .oyp-3d-help-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.oyp-3d-help-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.oyp-3d-help-tooltip:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
+}
+
+/* Loading State */
+.oyp-3d-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+}
+
+.oyp-3d-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 15px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: oyp-spin 1s linear infinite;
+}
+
+@keyframes oyp-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.oyp-3d-loading p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Error State */
+.oyp-3d-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #d63638;
+    z-index: 5;
+}
+
+.oyp-3d-error p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Controls */
+.oyp-3d-controls {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.oyp-reset-view {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.oyp-reset-view:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.oyp-reset-view svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* UI Overlay */
+.oyp-3d-ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.oyp-3d-ui-overlay > * {
+    pointer-events: auto;
+}
+
+/* Scale Ruler */
+.oyp-3d-scale-ruler {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.oyp-scale-ruler-line {
+    width: 50px;
+    height: 2px;
+    background: #333;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.oyp-scale-ruler-line:before,
+.oyp-scale-ruler-line:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 2px;
+    height: 6px;
+    background: #333;
+}
+
+.oyp-scale-ruler-line:before {
+    left: 0;
+}
+
+.oyp-scale-ruler-line:after {
+    right: 0;
+}
+
+.oyp-scale-ruler-label {
+    text-align: center;
+    line-height: 1;
+}
+
+.oyp-scale-value {
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* Thumbnail */
+.oyp-3d-thumbnail,
+.oyp-3d-thumbnail-inline {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    margin: 5px 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Inline thumbnail specific styling for WooCommerce gallery */
+.oyp-3d-thumbnail-inline {
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: block;
+}
+
+.oyp-3d-thumbnail:hover,
+.oyp-3d-thumbnail-inline:hover {
+    border-color: #0073aa;
+}
+
+.oyp-3d-thumb-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    border-radius: 2px;
+    position: relative;
+}
+
+.oyp-3d-thumb-icon svg {
+    width: 32px;
+    height: 32px;
+    color: #666;
+}
+
+.oyp-3d-thumbnail .oyp-3d-badge,
+.oyp-3d-thumbnail-inline .oyp-3d-badge {
+    top: 5px;
+    left: 5px;
+    padding: 4px 6px;
+    font-size: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .oyp-3d-viewer {
+        height: 300px;
+    }
+    
+    .oyp-3d-viewer-placeholder {
+        min-height: 300px;
+    }
+    
+    .oyp-3d-badge {
+        top: 10px;
+        left: 10px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .oyp-3d-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .oyp-reset-view {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    
+    .oyp-3d-scale-ruler {
+        bottom: 10px;
+        left: 10px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .oyp-3d-thumbnail {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .oyp-3d-thumb-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .oyp-3d-viewer {
+        height: 250px;
+    }
+    
+    .oyp-3d-viewer-placeholder {
+        min-height: 250px;
+    }
+    
+    .oyp-3d-help-tooltip {
+        left: -50px;
+        right: auto;
+        white-space: normal;
+        width: 200px;
+    }
+    
+    .oyp-3d-help-tooltip:before {
+        left: 62px;
+    }
+}
+
+/* WooCommerce Integration Specific Styles */
+.woocommerce div.product .woocommerce-product-gallery .oyp-3d-slide {
+    margin: 0;
+}
+
+.woocommerce div.product .woocommerce-product-gallery__trigger {
+    z-index: 9; /* Ensure it's below our 3D badge */
+}
+
+/* PhotoSwipe integration */
+.pswp .oyp-3d-viewer {
+    height: 100%;
+}
+
+/* Flexslider integration */
+.flexslider .oyp-3d-slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexslider .oyp-3d-viewer {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Loading states for different gallery types */
+.loading .oyp-3d-viewer-placeholder:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 15;
+}
