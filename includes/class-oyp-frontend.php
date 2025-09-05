@@ -206,10 +206,19 @@ class OYP_Frontend {
 		global $post;
 		$settings = get_post_meta( $post->ID, '_oyp_3d_settings', true );
 		
+		// Create a placeholder image for PhotoSwipe compatibility
+		$placeholder_image = OYP_PLUGIN_URL . 'assets/images/3d-model-placeholder.svg';
+		
 		ob_start();
 		?>
 		<div class="woocommerce-product-gallery__image oyp-3d-slide" data-oyp-3d-model="true">
-			<a href="<?php echo esc_url( $settings['model_url'] ); ?>" class="oyp-3d-gallery-link" data-3d-model="true">
+			<a href="<?php echo esc_url( $placeholder_image ); ?>" 
+			   class="oyp-3d-gallery-link" 
+			   data-3d-model="true"
+			   data-model-url="<?php echo esc_url( $settings['model_url'] ); ?>"
+			   data-size="800x600"
+			   data-caption="Interactive 3D Model"
+			   data-product-id="<?php echo esc_attr( $post->ID ); ?>">
 				<div class="oyp-3d-viewer-placeholder">
 					<div class="oyp-3d-badge">
 						<span class="oyp-3d-badge-text"><?php esc_html_e( '3D', 'observe-yor-product' ); ?></span>
@@ -232,7 +241,6 @@ class OYP_Frontend {
 								<path d="M8 2L8 6L5 3L8 2Z" fill="currentColor"/>
 								<path d="M8 14L8 10L11 13L8 14Z" fill="currentColor"/>
 								<path d="M2 8L6 8L3 11L2 8Z" fill="currentColor"/>
-								<path d="M14 8L10 8L13 5L14 8Z" fill="currentColor"/>
 								<circle cx="8" cy="8" r="2" stroke="currentColor" fill="none"/>
 							</svg>
 						</button>

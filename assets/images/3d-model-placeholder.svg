@@ -1,0 +1,27 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- 3D Cube Icon -->
+  <g transform="translate(400,300)">
+    <!-- Back faces -->
+    <path d="M-60,-60 L60,-60 L80,-40 L0,-40 Z" fill="#ffffff" opacity="0.6"/>
+    <path d="M60,-60 L60,60 L80,80 L80,-40 Z" fill="#ffffff" opacity="0.4"/>
+    
+    <!-- Front faces -->
+    <path d="M-60,-60 L-60,60 L60,60 L60,-60 Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M-60,60 L60,60 L80,80 L0,80 Z" fill="#ffffff" opacity="0.7"/>
+    <path d="M60,-60 L60,60 L80,80 L80,-40 Z" fill="#ffffff" opacity="0.5"/>
+  </g>
+  
+  <!-- 3D Text -->
+  <text x="400" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#ffffff">3D MODEL</text>
+  <text x="400" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" opacity="0.8">Interactive Preview</text>
+</svg>
